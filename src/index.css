@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --dark-bg-1000: #0e1832;
+  --dark-bg-900: #101b37;
+  --dark-bg-800: #28324a;
+  --dark-bg-700: #40495e;
+  --neon-red: #e41376;
+  --neon-blue: #01c8ee;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -9,9 +18,53 @@
 }
 
 body {
+  overflow-x: hidden;
+  overflow-y: scroll;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track {
+  background: var(--dark-bg-900); /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #093145; /* color of the scroll thumb */
+  border-radius: 2px; /* roundness of the scroll thumb */
+}
+
+.bg-dark-900 {
+  background-color: var(--dark-bg-900);
+}
+
+.bg-dark-800 {
+  background-color: var(--dark-bg-800);
+}
+
+.bg-dark-700 {
+  background-color: var(--dark-bg-700);
+}
+
+.bg-dark-gradient {
+  background-image: linear-gradient(
+    to bottom,
+    var(--dark-bg-900),
+    var(--dark-bg-1000),
+    var(--dark-bg-900)
+  );
+}
+
+.staat {
+  font-family: "Staatliches", cursive;
+}
+
+.mont {
+  font-family: "Montserrat Alternates", sans-serif;
 }

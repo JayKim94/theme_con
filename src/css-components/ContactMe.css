@@ -1,0 +1,78 @@
+.rotate-button {
+  position: relative;
+  color: #fff;
+  z-index: 0;
+  box-shadow: none;
+  transition: all 0.5s ease-out;
+}
+
+.rotate-button:hover {
+  box-shadow: 
+    /* inner right cyan broad */ 0 0 10px #fff,
+    /* outer white */ -10px 0 30px #ff00ffaa,
+    /* outer left magenta */ 10px 0 30px #01c8eeaa;
+}
+
+.rotate-button i {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  padding: 5px; /* the thickness of the border */
+  /* the below will do the magic */
+  mask: linear-gradient(#fff 0 0) content-box,
+    /* this will cover only the content area (no padding) */
+      linear-gradient(#fff 0 0); /* this will cover all the area */
+  -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    /* this will cover only the content area (no padding) */
+      linear-gradient(#fff 0 0); /* this will cover all the area */
+  -webkit-mask-composite: xor; /* needed for old browsers until the below is more supported */
+  mask-composite: exclude; /* this will exclude the first layer from the second so only the padding area will be kept visible */
+}
+
+.rotate-button i::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  height: 400px;
+  opacity: 0.75;
+  background: linear-gradient(#01c8ee, #e41376);
+  transform: translate(-50%, -50%);
+  animation: rotate-border 12s linear infinite;
+}
+
+.rotate-button:hover i::before {
+  opacity: 1;
+}
+
+.neon-text {
+  color: #fff;
+  animation: flicker 4s infinite alternate;
+}
+
+@keyframes rotate-border {
+  100% {
+    transform: translate(-50%, -50%) rotate(1turn);
+  }
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    text-shadow: 0 0 5px #fefefe60, 0 0 9px #fefefe60, 0 0 18px #fefefe60,
+      0 0 30px #01c8ee, 0 0 40px #01c8ee, 0 0 50px #e41376, 0 0 60px #01c8ee,
+      0 0 80px #e41376;
+  }
+  20%,
+  24%,
+  55% {
+    text-shadow: none;
+  }
+}
